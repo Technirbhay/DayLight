@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daylight — New Tab</title>
+  <link rel="stylesheet" href="newtab.css">
+</head>
+<body>
+
+  <div class="wallpaper-layer" id="wallpaperLayer"></div>
+  <div class="wallpaper-shade"></div>
+  <div class="ambient-bg"></div>
+
+  <main class="dashboard">
+
+    <header class="topbar">
+      <a class="brand" href="#">
+        <span class="brand-mark">✦</span>
+        <span>Daylight</span>
+      </a>
+
+      <div class="top-actions">
+        <button class="icon-button" id="wallpaperButton" title="Change wallpaper">▧</button>
+        <input type="file" id="wallpaperInput" accept="image/*" hidden>
+        <button class="icon-button" id="openSettingsTop" title="Settings">⚙</button>
+      </div>
+    </header>
+
+    <section class="main-layout">
+
+      <!-- LEFT: CLOCK AND GREETING -->
+      <section class="left-panel">
+
+        <div class="clock-card glass">
+          <div class="clock-face">
+            <img class="clock-art" id="clockArt" src="assets/images/clock-art.png" alt="">
+            <span class="clock-number n12">12</span>
+            <span class="clock-number n3">3</span>
+            <span class="clock-number n6">6</span>
+            <span class="clock-number n9">9</span>
+
+            <span class="clock-hand hour-hand" id="hourHand"></span>
+            <span class="clock-hand minute-hand" id="minuteHand"></span>
+            <span class="clock-hand second-hand" id="secondHand"></span>
+            <span class="clock-center"></span>
+          </div>
+        </div>
+
+        <div class="greeting-block">
+          <p class="eyebrow">YOUR PERSONAL SPACE</p>
+
+          <h1 class="greeting-title">
+            <span id="greeting">Good Evening</span><span>, </span><button
+              type="button"
+              id="userName"
+              class="name-edit"
+              title="Click to edit your name"
+            >Friend</button><span>!</span>
+          </h1>
+
+          <p id="date" class="date-text"></p>
+          <p id="digitalTime" class="digital-time"></p>
+        </div>
+
+      </section>
+
+      <!-- RIGHT: WIDGETS -->
+      <section class="right-panel">
+
+        <section class="weather-card glass">
+          <div class="weather-top">
+            <div>
+              <p class="eyebrow">YOUR LOCAL WEATHER</p>
+              <h2>Hello! How are you today?</h2>
+            </div>
+            <button class="small-icon-button" id="refreshWeather" title="Refresh weather">↻</button>
+          </div>
+
+          <div class="weather-content">
+            <div class="weather-symbol" id="weatherIcon">☀️</div>
+            <div class="weather-reading">
+              <div class="temperature" id="temperature">--°</div>
+              <p id="weatherDescription">Getting weather...</p>
+              <p id="weatherLocation" class="weather-location">Your location</p>
+            </div>
+          </div>
+
+          <div class="weather-bottom">
+            <span>💧 <span id="weatherHumidity">--</span>% humidity</span>
+            <span>🌬 <span id="weatherWind">--</span> km/h wind</span>
+          </div>
+        </section>
+
+        <!-- SEARCH -->
+        <section class="search-card glass">
+          <form id="searchForm" class="search-form">
+            <span class="search-symbol">⌕</span>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search the web or enter a URL..."
+              autocomplete="off"
+            >
+            <button type="submit" class="search-button">Search ↗</button>
+          </form>
+        </section>
+
+        <!-- SEARCH ENGINES -->
+        <div class="search-engines">
+          <span class="engine-label">Search with</span>
+          <button class="engine-chip active" data-engine="https://www.google.com/search?q=">Google</button>
+          <button class="engine-chip" data-engine="https://www.bing.com/search?q=">Bing</button>
+          <button class="engine-chip" data-engine="https://duckduckgo.com/?q=">DuckDuckGo</button>
+          <button class="engine-chip" data-engine="https://search.brave.com/search?q=">Brave</button>
+        </div>
+
+        <!-- SHORTCUTS -->
+        <section class="shortcuts-section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">QUICK ACCESS</p>
+              <h2>Your favourites</h2>
+            </div>
+          </div>
+
+          <div class="shortcuts-grid">
+            <a class="shortcut glass" href="https://www.youtube.com/" target="_blank" rel="noreferrer">
+              <span class="shortcut-icon youtube">▶</span>
+              <span>YouTube</span>
+            </a>
+            <a class="shortcut glass" href="https://open.spotify.com/" target="_blank" rel="noreferrer">
+              <span class="shortcut-icon spotify">♫</span>
+              <span>Spotify</span>
+            </a>
+            <a class="shortcut glass" href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+              <span class="shortcut-icon instagram">◎</span>
+              <span>Instagram</span>
+            </a>
+            <a class="shortcut glass" href="https://maps.google.com/" target="_blank" rel="noreferrer">
+              <span class="shortcut-icon maps">⌖</span>
+              <span>Maps</span>
+            </a>
+            <a class="shortcut glass" href="https://github.com/" target="_blank" rel="noreferrer">
+              <span class="shortcut-icon github">⌘</span>
+              <span>GitHub</span>
+            </a>
+            <a class="shortcut glass" href="https://chatgpt.com/" target="_blank" rel="noreferrer">
+              <span class="shortcut-icon chatgpt">✳</span>
+              <span>ChatGPT</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- SPOTIFY -->
+        <section class="spotify-card glass">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">YOUR MUSIC SPACE</p>
+              <h2>Spotify playlist</h2>
+            </div>
+            <span class="music-mark">♫</span>
+          </div>
+
+          <div class="spotify-input-row">
+            <input id="spotifyInput" type="url" placeholder="Paste your Spotify playlist link...">
+            <button id="saveSpotify" class="small-action-button">Save</button>
+          </div>
+
+          <p id="spotifyMessage" class="spotify-message">Add a playlist to listen here. Playback follows Spotify's own player rules.</p>
+
+          <p class="spotify-note">Full songs and automatic next-track playback require you to be signed in to Spotify; free previews may be limited to 30 seconds by Spotify.</p>
+
+          <iframe
+            id="spotifyFrame"
+            title="Spotify playlist"
+            src=""
+            width="100%"
+            height="152"
+            frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </section>
+
+      </section>
+    </section>
+
+    <footer class="site-footer">
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </footer>
+  </main>
+
+  <!-- SETTINGS -->
+  <div class="settings-overlay" id="settingsOverlay">
+    <section class="settings-panel glass" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+
+      <div class="settings-header">
+        <div>
+          <p class="eyebrow">MAKE IT YOURS</p>
+          <h2 id="settingsTitle">Personalize Daylight</h2>
+        </div>
+        <button class="icon-button" id="closeSettings" aria-label="Close settings">✕</button>
+      </div>
+
+      <div class="settings-section">
+        <h3>Choose your colour</h3>
+
+        <div class="theme-options">
+          <button class="theme-option" data-theme-choice="mint">
+            <span class="theme-swatch mint"></span><span>Mint Green</span>
+          </button>
+          <button class="theme-option" data-theme-choice="yellow">
+            <span class="theme-swatch yellow"></span><span>Soft Yellow</span>
+          </button>
+          <button class="theme-option" data-theme-choice="peach">
+            <span class="theme-swatch peach"></span><span>Peach</span>
+          </button>
+          <button class="theme-option" data-theme-choice="lavender">
+            <span class="theme-swatch lavender"></span><span>Lavender</span>
+          </button>
+          <button class="theme-option" data-theme-choice="beige">
+            <span class="theme-swatch beige"></span><span>Warm Beige</span>
+          </button>
+          <button class="theme-option" data-theme-choice="pink">
+            <span class="theme-swatch pink"></span><span>Dusty Pink</span>
+          </button>
+          <button class="theme-option" data-theme-choice="olive">
+            <span class="theme-swatch olive"></span><span>Olive</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h3>Custom accent colour</h3>
+        <div class="custom-color-row">
+          <label for="customAccent">Choose your own colour</label>
+          <input type="color" id="customAccent" value="#71966b">
+        </div>
+        <button class="settings-action" id="resetAccent">Reset custom colour</button>
+      </div>
+
+      <div class="settings-section">
+        <h3>Wallpaper</h3>
+        <p class="settings-help">Auto wallpaper changes every minute. Your uploaded wallpaper always stays selected until you reset it.</p>
+        <label class="wallpaper-select-label" for="wallpaperCategory">Auto wallpaper category</label>
+        <select class="wallpaper-category" id="wallpaperCategory">
+          <option value="nature landscape">Nature</option>
+          <option value="cars automotive">Cars</option>
+          <option value="motorcycles bikes">Bikes</option>
+          <option value="travel landmarks">Travel</option>
+          <option value="space astronomy">Space</option>
+          <option value="architecture buildings">Architecture</option>
+          <option value="animals wildlife">Animals</option>
+        </select>
+        <div class="wallpaper-actions">
+          <button class="settings-action" id="refreshAutoWallpaper">Refresh now</button>
+          <button class="settings-action" id="settingsWallpaper">▧ Upload custom wallpaper</button>
+        </div>
+        <button class="settings-action" id="resetWallpaper">↺ Reset wallpaper</button>
+      </div>
+
+      <div class="settings-section">
+        <h3>Clock image</h3>
+        <input type="file" id="clockImageInput" accept="image/*" hidden>
+        <button class="settings-action" id="settingsClockImage">Upload clock image</button>
+        <button class="settings-action" id="resetClockImage">Reset clock image</button>
+      </div>
+
+      <div class="settings-section">
+        <h3>Spotify</h3>
+        <button class="settings-action danger-action" id="clearSpotify">Remove saved playlist</button>
+      </div>
+
+    </section>
+  </div>
+
+  <script src="js/theme.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/spotify.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

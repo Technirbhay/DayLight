@@ -1,0 +1,28 @@
+
+{
+  "manifest_version": 3,
+  "name": "Daylight",
+  "version": "1.0.0",
+  "description": "A beautiful customizable new tab with glassmorphism, wallpapers, weather, shortcuts and Spotify.",
+
+  "permissions": [
+    "storage"
+  ],
+
+  "host_permissions": [
+    "https://api.open-meteo.com/*",
+    "https://geocoding-api.open-meteo.com/*",
+    "https://commons.wikimedia.org/*",
+    "https://*.wikimedia.org/*"
+  ],
+
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+
+  "icons": {
+    "16": "assets/icons/16.png",
+    "48": "assets/icons/48.png",
+    "128": "assets/icons/128.png"
+  }
+}
